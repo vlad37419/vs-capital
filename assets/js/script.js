@@ -15,7 +15,7 @@ let mainSlider = new Swiper('.main', {
     },
 
     mousewheel: {
-        sensitivity: .4,
+        sensitivity: 1,
     },
 
     watchOverflow: true,
