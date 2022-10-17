@@ -328,8 +328,8 @@ body {
 }
 
 .project-sub-descr {
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 20px;
+    line-height: 120%;
     color: #252525;
 }
 
@@ -440,6 +440,7 @@ body {
     margin-bottom: 10px;
     font-size: 24px;
     line-height: 30px;
+    display: block;
 }
 
 .director__sub-descr {
@@ -457,6 +458,17 @@ body {
     top: -110px;
     margin-right: 10px;
     min-width: 350px;
+}
+
+.director__picture::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 90%;
+    bottom: 0;
+    box-shadow: inset 0px 0px 20px 20px #000103;
 }
 
 .director__info {
@@ -703,6 +715,18 @@ body {
 .contacts__director {
     transform: translateY(-45px);
     min-width: 430px;
+    position: relative;
+}
+
+.contacts__director::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 80px;
+    bottom: 0;
+    box-shadow: inset 0px -50px 25px 0px #000103;
 }
 
 @media (max-width: 1200px) {

@@ -4,9 +4,13 @@ let mainSlider = new Swiper('.main', {
     wrapperClass: 'main__wrapper',
     slideClass: 'main__section',
 
+    preventInteractionOnTransition: true,
     direction: 'vertical',
     slidesPerView: 'auto',
     parallax: true,
+    resistance: false,
+    touchMoveStopPropagation: false,
+    touchReleaseOnEdges: true,
 
     keyboard: {
         enabled: true,
@@ -15,7 +19,7 @@ let mainSlider = new Swiper('.main', {
     },
 
     mousewheel: {
-        sensitivity: 1,
+        sensitivity: .8,
     },
 
     watchOverflow: true,
@@ -51,6 +55,9 @@ function setScrollType() {
     if (wrapper.classList.contains('_free')) {
         wrapper.classList.remove('_free');
         mainSlider.params.freeMode.enabled = false;
+        mainSlider.params.preventInteractionOnTransition = true;
+        mainSlider.params.speed = 800;
+        mainSlider.params.resistanceRatio = 0.85;
     }
 
     for (let i = 0; i < mainSlider.slides.length; i++) {
@@ -62,6 +69,9 @@ function setScrollType() {
             if (mainSlideContentHeight > window.innerHeight) {
                 wrapper.classList.add('_free');
                 mainSlider.params.freeMode.enabled = true;
+                mainSlider.params.preventInteractionOnTransition = false;
+                mainSlider.params.speed = 100;
+                mainSlider.params.resistanceRatio = 0;
                 break;
             }
         }
