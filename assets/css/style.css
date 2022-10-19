@@ -219,21 +219,30 @@ picture {
 body {
     font-family: 'Gilroy';
     background-color: #fff;
-}
-
-.main {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
+    position: relative;
+    overflow: auto;
+}
+
+.main__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
 }
 
 .main__section {
     flex: 1 0 100%;
+    min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     z-index: 20;
+    position: sticky;
+    top: 0;
 }
 
 .section__content {
@@ -682,11 +691,21 @@ body {
 
 .stormberg__block {
     margin-right: 55px;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform .8s ease, opacity .8s ease;
 }
 
 .stormberg__block:last-child {
     margin-right: 0;
     padding-top: 50px;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.stormberg__block.current {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .stormberg__technologies {
@@ -725,11 +744,21 @@ body {
 .vincko__block {
     margin-right: 90px;
     position: relative;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform .8s ease, opacity .8s ease;
 }
 
 .vincko__block:last-child {
     margin-right: 0;
     padding-top: 50px;
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.vincko__block.current {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .vincko__picture_company {
@@ -771,6 +800,14 @@ body {
 
 .contacts__info {
     padding-top: 130px;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.contacts__info.current {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .contacts__title {
@@ -792,9 +829,17 @@ body {
 }
 
 .contacts__director {
+    opacity: 0;
+    /* transform: translateX(100%); */
     transform: translateY(-45px);
     min-width: 430px;
     position: relative;
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.contacts__director.current {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contacts__director::after {
