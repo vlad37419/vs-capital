@@ -38,18 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainSection = document.querySelectorAll('.main__section');
 
     function addCssTopForStickyBlock () {
-        console.log('test');
         if (mainSection.length > 0) {
             for (let i = 0; i < mainSection.length; i += 1) {
                 let section = mainSection[i];
                 let sectionHeight = section.offsetHeight;
                 let windowHeight = document.documentElement.clientHeight;
-        
-                if (sectionHeight > windowHeight) {
-                    section.style.top = (windowHeight - sectionHeight) + 'px';
-                } else {
-                    section.style.top = 0 + 'px';
-                }
+                let sectionStyleTop = windowHeight - sectionHeight;
+
+                section.style.top = `${sectionStyleTop}px`;
             }
         }
     }
@@ -60,5 +56,5 @@ document.addEventListener("DOMContentLoaded", function () {
     
     animOnScroll();
 
-    setTimeout(addCssTopForStickyBlock(), 500);
+    setTimeout(addCssTopForStickyBlock(), 1000);
 });
